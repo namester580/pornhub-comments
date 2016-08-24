@@ -1,0 +1,13 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "dependencies": {
+    "cheerio": "^0.20.0",
+    "fs": "0.0.2",
+    "jquery": "^3.1.0",
+    "nightmare": "^2.6.1",
+    "node-twitter-api": "^1.7.4",
+    "pornhub": "0.0.5",
+    "request": "^2.74.0"
+  }
+}

@@ -5,9 +5,9 @@
 //var $ = require('jquery');
 //var io = require('socket.io')(http);
 var request = require('request');
-var cheerio = require('cheerio');
+
 var Nightmare = require('nightmare');
-var nightmare = Nightmare({ show: true });
+var nightmare = Nightmare({ show: false });
 var fs = require('fs');
 fs.writeFile('comments.txt','');
 var $ = require('jquery');
@@ -29,21 +29,24 @@ var twitter = new twitterAPI({
 
 
 
-function rn(){
+var rn = function(){
+    var nightmare = Nightmare({ show: false });
+    console.log('rning');
 nightmare
     .goto('http://pornhub.com/random')
    // .exis
-    .wait('.commentMessage')
+   // .wait('.commentMessage')
     .wait('#cmtWrapper  h2  span')
     .wait(function(){
         var cmtwrap = document.querySelector('#cmtWrapper  h2  span');
-        if(cmtwrap.innerText=='(0)') {
+        if(cmtwrap.innerText=='(0)'||!cmtwrap) {
             window.location.href='http://www.pornhub.com/random';
       //      location.reload();
         }else{
          return true;
         }
     })
+    .wait('.commentMessage')
     .evaluate(function () {
 
 
@@ -56,11 +59,10 @@ nightmare
     //  console.log(document.querySelector('.commentMessage').text());
 var cml = document.querySelectorAll('.commentMessage').length;
 //console.log( document.querySelector('.commentMessage').length);
-      var  rndm = Math.round(Math.random()*cml-2);
-        console.log('length:' + cml );
+      var  rndm = Math.round(Math.random()*(cml-2));
        var cmnt =document.querySelectorAll('.commentMessage')[rndm].innerText;
-      cmnt =  cmnt.slice(0,cmnt.length-10).trim();
-            return cmnt + '-' + document.querySelectorAll('.commentBlock .usernameWrap .usernameLink ')[rndm].innerText;
+      cmnt =  cmnt.trim().slice(0,cmnt.length-10).trim();
+            return cmnt + '       -' + document.querySelectorAll('.commentBlock .usernameWrap .usernameLink ')[rndm].innerText;
 
         })
     .end()
@@ -84,13 +86,13 @@ var cml = document.querySelectorAll('.commentMessage').length;
 
 
 
-
+//return true;
 
 
     })
     .catch(function (error) {
-        window.location.href='http://www.pornhub.com/random';
-
+      //  window.location.href='http://www.pornhub.com/random';
+/*
 
         //  console.log(document.querySelector('.commentMessage').text());
         var cml = document.querySelectorAll('.commentMessage').length;
@@ -101,15 +103,15 @@ var cml = document.querySelectorAll('.commentMessage').length;
         cmnt =  cmnt.slice(0,cmnt.length-10).trim();
         return cmnt + '-' + document.querySelectorAll('.commentBlock .usernameWrap .usernameLink ')[rndm].innerText;
 
+*/
+return rn;
 
 
 
 
 
 
-
-
-        console.error('Search failed:', error);
+      //  console.error('Search failed:', error);
     });
 
 
@@ -118,4 +120,4 @@ var cml = document.querySelectorAll('.commentMessage').length;
 }
 rn();
 
-setInterval(rn, 30*60*1000);
+//setInterval(rn,30*60*1000)

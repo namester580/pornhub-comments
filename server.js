@@ -72,8 +72,8 @@ var cml = document.querySelectorAll('.commentMessage').length;
         twitter.statuses("update", {
                 status: result
             },
-            '766595156661374984-2SQdWTQ9iNdeX9Uq22l0sEuSB6CEWyO',
-            'ZFADYYCMnGHsfmj0JVkWHNZYt0QaJ7GBi2B9zWKKHj4vj',
+          ' hdhdhsv ',
+            'dhdj',
             function (error, data, response) {
                 if (error) {
                     // something went wrong

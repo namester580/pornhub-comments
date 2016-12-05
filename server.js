@@ -1,7 +1,6 @@
 /**
  * Created by CoBLiN on 2016/08/19.
  */
-
 //var $ = require('jquery');
 //var io = require('socket.io')(http);
 var request = require('request');
@@ -15,8 +14,8 @@ var $ = require('jquery');
 
 var twitterAPI = require('node-twitter-api');
 var twitter = new twitterAPI({
-    consumerKey: 'xLw90dInBuiyZXCpRzaLuTEPR',
-    consumerSecret: 'wdVRbwU4k62yEH6pN22JmcztWf61Ivlv6sU4cE3Q9hsaGjRg48',
+    consumerKey:'XCpRzaLuTErxamplekeyPR',
+    consumerSecret: 'lv6sU4cE3Q9ddg48',
     callback: 'http://placeholder.com'
 });
 
